@@ -3,5 +3,7 @@ export interface Planet {
   readonly climate: string;
   readonly terrain: string;
   readonly population: string;
+  readonly residentsCount: number;
+  readonly filmsCount: number;
   readonly created: Date;
 }
