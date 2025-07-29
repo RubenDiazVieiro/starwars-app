@@ -125,3 +125,12 @@ This application serves as a solid foundation for a comprehensive Star Wars data
 - **Favorites System**: Allow users to bookmark favorite characters, planets, etc.
 - **Comparison Tool**: Side-by-side comparison of different entities
 - **Statistics Dashboard**: Visual charts
+
+### 🔄 Data Synchronization & Reliability
+- **Scheduled Data Refresh**: In case the SWAPI undergoes modifications or updates, implementing a scheduled job (using Spring's `@Scheduled` annotation or Quartz) would be highly beneficial. This scheduler could run periodically (daily, weekly, or at configurable intervals) to:
+
+  - Check for changes in the external API data
+  - Refresh cached information in the database
+  - Ensure data consistency and up-to-date content
+  - Handle potential API changes gracefully
+  - Log synchronization results for monitoring purposes
