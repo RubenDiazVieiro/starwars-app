@@ -1,4 +1,8 @@
-<div class="planets-container">
+<div class="planets-container starfield-background">
+
+  <div class="stars-layer-1"></div>
+  <div class="stars-layer-2"></div>
+  <div class="stars-layer-3"></div>
 
   <nav class="back-navigation">
     <a routerLink="/home" class="back-btn">
@@ -23,34 +27,36 @@
   }
 
   @if (!hasError && !isEmpty) {
-    <table>
-      <thead>
-      <tr>
-        <th (click)="changeSort('name')" class="sortable"
-            [attr.data-sort]="getSortDirection('name')">
-          Name {{ getSortIcon('name') }}
-        </th>
-        <th (click)="changeSort('created')" class="sortable"
-            [attr.data-sort]="getSortDirection('created')">
-          First seen {{ getSortIcon('created') }}
-        </th>
-        <th>Climate</th>
-        <th>Terrain</th>
-        <th>Population</th>
-      </tr>
-      </thead>
-      <tbody>
-        @for (planet of planets; track planet) {
-          <tr>
-            <td>{{ planet.name }}</td>
-            <td>{{ planet.created | date:'yyyy-MM-dd' }}</td>
-            <td>{{ planet.climate }}</td>
-            <td>{{ planet.terrain }}</td>
-            <td>{{ planet.population }}</td>
-          </tr>
-        }
-      </tbody>
-    </table>
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th (click)="changeSort('name')" class="sortable"
+              [attr.data-sort]="getSortDirection('name')">
+            Name {{ getSortIcon('name') }}
+          </th>
+          <th (click)="changeSort('created')" class="sortable"
+              [attr.data-sort]="getSortDirection('created')">
+            First seen {{ getSortIcon('created') }}
+          </th>
+          <th>Climate</th>
+          <th>Terrain</th>
+          <th>Population</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (planet of planets; track planet) {
+            <tr>
+              <td>{{ planet.name }}</td>
+              <td>{{ planet.created | date:'yyyy-MM-dd' }}</td>
+              <td>{{ planet.climate }}</td>
+              <td>{{ planet.terrain }}</td>
+              <td>{{ planet.population }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
 
     <div class="pagination">
       <div class="pagination-controls">
