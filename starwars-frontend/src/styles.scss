@@ -187,6 +187,9 @@ table {
     padding: var(--spacing-md);
     border-bottom: 2px solid var(--sw-blue);
     position: relative;
+    height: 60px;
+    vertical-align: middle;
+    line-height: 1.4;
 
     &.sortable {
       cursor: pointer;

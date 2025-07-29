@@ -23,23 +23,23 @@
             [attr.data-sort]="getSortDirection('name')">
           Name {{ getSortIcon('name') }}
         </th>
-        <th>Climate</th>
-        <th>Terrain</th>
-        <th>Population</th>
         <th (click)="changeSort('created')" class="sortable"
             [attr.data-sort]="getSortDirection('created')">
           First seen {{ getSortIcon('created') }}
         </th>
+        <th>Climate</th>
+        <th>Terrain</th>
+        <th>Population</th>
       </tr>
       </thead>
       <tbody>
         @for (planet of planets; track planet) {
           <tr>
             <td>{{ planet.name }}</td>
+            <td>{{ planet.created | date:'yyyy-MM-dd' }}</td>
             <td>{{ planet.climate }}</td>
             <td>{{ planet.terrain }}</td>
             <td>{{ planet.population }}</td>
-            <td>{{ planet.created | date:'yyyy-MM-dd' }}</td>
           </tr>
         }
       </tbody>

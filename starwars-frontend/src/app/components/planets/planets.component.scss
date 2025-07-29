@@ -47,18 +47,19 @@
     margin-bottom: 1rem;
     font-family: 'Orbitron', sans-serif;
 
-    th, td {
-      padding: 0.75rem;
+    // Aumentamos la especificidad para sobrescribir los estilos globales
+    th {
+      padding: 0.75rem !important;
       border-bottom: 1px solid #444;
       text-align: left;
-    }
-
-    th {
       background-color: rgba(34, 34, 34, 0.8);
       color: #ffc107;
     }
 
     td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #444;
+      text-align: left;
       color: #ddd;
     }
 
@@ -157,12 +158,12 @@
 
 th.sortable {
   cursor: pointer;
-  color: #ffe81f;
+  color: #ffe81f !important;
   user-select: none;
   font-size: 1rem;
 
   &:hover {
-    color: #fff;
+    color: #fff !important;
     text-shadow: 0 0 8px #ffe81f;
   }
 }

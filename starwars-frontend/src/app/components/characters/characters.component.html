@@ -23,15 +23,15 @@
             [attr.data-sort]="getSortDirection('name')">
           Character <span [innerHTML]="getSortIcon('name')"></span>
         </th>
+        <th (click)="changeSort('created')" class="sortable"
+            [attr.data-sort]="getSortDirection('created')">
+          First seen {{ getSortIcon('created') }}
+        </th>
         <th>Species</th>
         <th>Height (cm)</th>
         <th>Mass (kg)</th>
         <th>Skin</th>
         <th>Movies</th>
-        <th (click)="changeSort('created')" class="sortable"
-            [attr.data-sort]="getSortDirection('created')">
-          First seen {{ getSortIcon('created') }}
-        </th>
 
       </tr>
       </thead>
@@ -39,12 +39,12 @@
         @for (character of characters; track character) {
           <tr>
             <td>{{ character.name }}</td>
+            <td>{{ character.created | date:'yyyy-MM-dd' }}</td>
             <td>{{ character.gender }}</td>
             <td>{{ character.height }}</td>
             <td>{{ character.mass }}</td>
             <td>{{ character.skinColor }}</td>
             <td class="center">{{ character.filmsCount }}</td>
-            <td>{{ character.created | date:'yyyy-MM-dd' }}</td>
           </tr>
         }
       </tbody>
