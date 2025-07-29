@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile
     container_name: starwars-frontend
     ports:
-      - "4200:4200"
+      - "6969:6969"
     depends_on:
       - backend
     networks:
