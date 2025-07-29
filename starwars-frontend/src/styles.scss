@@ -141,15 +141,14 @@ input, select, textarea {
   }
 }
 
-// === 🎯 TABLAS MEJORADAS - MÁS ESPACIOSAS ===
 table {
   font-family: var(--font-secondary);
-  width: auto; /* ✅ NO ocupar todo el ancho */
-  max-width: 95%; /* ✅ Máximo 95% del contenedor */
-  min-width: 800px; /* ✅ Ancho mínimo para legibilidad */
-  margin: var(--spacing-lg) auto; /* ✅ Centrada con más margen */
-  border-collapse: separate; /* ✅ Cambio importante para spacing */
-  border-spacing: 0; /* ✅ Sin espacios entre bordes */
+  width: auto;
+  max-width: 95%;
+  min-width: 800px;
+  margin: var(--spacing-lg) auto;
+  border-collapse: separate;
+  border-spacing: 0;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 12px;
   overflow: hidden;
@@ -162,14 +161,14 @@ table {
     letter-spacing: 0.05em;
     background: linear-gradient(135deg, rgba(74, 144, 226, 0.3), rgba(255, 232, 31, 0.1));
     color: var(--sw-yellow);
-    padding: 1.2rem 1.5rem; /* ✅ MÁS padding para más espacio */
+    padding: 1.2rem 1.5rem;
     border-bottom: 2px solid var(--sw-blue);
     position: relative;
-    height: auto; /* ✅ Altura automática */
+    height: auto;
     min-height: 60px;
     vertical-align: middle;
     line-height: 1.4;
-    white-space: nowrap; /* ✅ Evitar quiebre de línea en headers */
+    white-space: nowrap;
 
     &.sortable {
       cursor: pointer;
@@ -189,29 +188,27 @@ table {
   }
 
   td {
-    padding: 1rem 1.5rem; /* ✅ MÁS padding en celdas */
+    padding: 1rem 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
-    white-space: nowrap; /* ✅ Evitar quiebre de contenido */
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* ✅ Puntos suspensivos si es muy largo */
-    max-width: 200px; /* ✅ Ancho máximo por celda */
+    text-overflow: ellipsis;
+    max-width: 200px;
   }
 
   tr:hover {
     background: rgba(255, 232, 31, 0.08);
-    transform: scale(1.005); /* ✅ Efecto más sutil */
+    transform: scale(1.005);
   }
 }
 
-// === 🎯 CONTENEDOR DE TABLA CON SCROLL HORIZONTAL ===
 .table-container {
   width: 100%;
   overflow-x: auto;
   margin: var(--spacing-lg) 0;
   padding: 0 var(--spacing-md);
 
-  /* Estilo de scrollbar personalizado */
   &::-webkit-scrollbar {
     height: 8px;
   }
@@ -279,8 +276,8 @@ table {
   input[type="text"] {
     width: 100%;
     max-width: 400px;
-    margin: 0 auto var(--spacing-lg) auto; /* ✅ Centrado */
-    display: block; /* ✅ Para que funcione el margin auto */
+    margin: 0 auto var(--spacing-lg) auto;
+    display: block;
     font-size: 1.1rem;
   }
 }
@@ -339,7 +336,7 @@ table {
     font-size: 0.9rem;
 
     th, td {
-      padding: 0.8rem 1rem; /* ✅ Menos padding en móviles */
+      padding: 0.8rem 1rem;
     }
   }
 
@@ -363,7 +360,7 @@ table {
     font-size: 0.8rem;
 
     th, td {
-      padding: 0.6rem 0.8rem; /* ✅ Aún menos padding en móviles pequeños */
+      padding: 0.6rem 0.8rem;
     }
 
     .arrow {

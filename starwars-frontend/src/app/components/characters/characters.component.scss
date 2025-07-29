@@ -40,12 +40,11 @@
     }
   }
 
-  // ✅ Aumentamos la especificidad para sobrescribir los estilos globales
   .table-container table {
-    width: auto !important; // ✅ Forzamos que NO ocupe todo el ancho
-    max-width: 90% !important; // ✅ Máximo 90% del contenedor
-    min-width: 800px !important; // ✅ Ancho mínimo para legibilidad
-    margin: 1.5rem auto !important; // ✅ Centrada horizontalmente
+    width: auto !important;
+    max-width: 90% !important;
+    min-width: 800px !important;
+    margin: 1.5rem auto !important;
     border-collapse: collapse;
     font-family: 'Orbitron', sans-serif;
     background: rgba(0, 0, 0, 0.4);
@@ -54,10 +53,10 @@
     box-shadow: 0 0 30px rgba(255, 232, 31, 0.15);
 
     th:not(.sortable), td {
-      padding: 1rem 1.5rem; // ✅ Más padding para mayor espaciado
+      padding: 1rem 1.5rem;
       border-bottom: 1px solid #444;
       text-align: left;
-      white-space: nowrap; // ✅ Evitar quiebre de línea
+      white-space: nowrap;
     }
 
     th {
@@ -65,7 +64,7 @@
       color: #ffc107 !important;
       border-bottom: 2px solid #4A90E2;
       text-align: left;
-      min-height: 60px; // ✅ Altura mínima para headers
+      min-height: 60px;
       vertical-align: middle;
       font-weight: 600;
       text-transform: uppercase;
@@ -74,19 +73,17 @@
 
     td {
       color: #ddd;
-      max-width: 200px; // ✅ Ancho máximo por celda
+      max-width: 200px;
       overflow: hidden;
-      text-overflow: ellipsis; // ✅ Puntos suspensivos si es muy largo
+      text-overflow: ellipsis;
     }
 
-    // ✅ Efecto hover más sutil
     tr:hover {
       background: rgba(255, 232, 31, 0.08) !important;
       transform: scale(1.002);
     }
   }
 
-  // ✅ Asegurar que el contenedor de tabla tenga scroll horizontal
   .table-container {
     width: 100%;
     overflow-x: auto;
@@ -247,7 +244,6 @@ th.sortable {
   margin: 0;
 }
 
-// ✅ Media queries actualizadas para la nueva tabla
 @media (max-width: 1200px) {
   .character-container .table-container table {
     min-width: 700px !important;

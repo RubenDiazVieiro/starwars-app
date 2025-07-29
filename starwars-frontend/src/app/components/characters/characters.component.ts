@@ -1,4 +1,3 @@
-
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Character } from '../../models/character.model';
 import { CharacterService, CharacterFilters } from '../../services/character.service';
