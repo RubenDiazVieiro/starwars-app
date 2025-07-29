@@ -1,10 +1,12 @@
-import { Component, OnInit, inject } from '@angular/core';
+
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Planet } from '../../models/planet.model';
 import { PlanetsService, PlanetFilters } from '../../services/planets.service';
 import { InternalPageResponse } from '../../services/base-api.service';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-planets',
@@ -13,8 +15,9 @@ import { RouterModule } from '@angular/router';
   templateUrl: './planets.component.html',
   styleUrls: ['./planets.component.scss']
 })
-export class PlanetsComponent implements OnInit {
+export class PlanetsComponent implements OnInit, OnDestroy {
   private planetsService = inject(PlanetsService);
+  private destroy$ = new Subject<void>();
 
   hasError = false;
   errorMessage = '';
@@ -32,6 +35,11 @@ export class PlanetsComponent implements OnInit {
     this.loadPlanets();
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   loadPlanets(): void {
     this.hasError = false;
     this.errorMessage = '';
@@ -45,6 +53,7 @@ export class PlanetsComponent implements OnInit {
     };
 
     this.planetsService.searchPlanets(filters)
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response: InternalPageResponse<Planet>) => {
           this.planets = response.data;
@@ -131,5 +140,4 @@ export class PlanetsComponent implements OnInit {
     if (this.sortField !== field) return '▲▼';
     return this.sortDirection === 'asc' ? '▲' : '▼';
   }
-
 }

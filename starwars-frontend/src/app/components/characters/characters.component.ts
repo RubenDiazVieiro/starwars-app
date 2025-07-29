@@ -1,10 +1,12 @@
-import { Component, OnInit, inject } from '@angular/core';
+
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Character } from '../../models/character.model';
 import { CharacterService, CharacterFilters } from '../../services/character.service';
 import { InternalPageResponse } from '../../services/base-api.service';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-characters',
@@ -13,8 +15,9 @@ import { RouterModule } from '@angular/router';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss']
 })
-export class CharactersComponent implements OnInit {
+export class CharactersComponent implements OnInit, OnDestroy {
   private characterService = inject(CharacterService);
+  private destroy$ = new Subject<void>();
 
   hasError = false;
   errorMessage = '';
@@ -32,6 +35,11 @@ export class CharactersComponent implements OnInit {
     this.loadCharacters();
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   loadCharacters(): void {
     this.hasError = false;
     this.errorMessage = '';
@@ -45,6 +53,7 @@ export class CharactersComponent implements OnInit {
     };
 
     this.characterService.searchCharacters(filters)
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response: InternalPageResponse<Character>) => {
           this.characters = response.data;
@@ -131,5 +140,4 @@ export class CharactersComponent implements OnInit {
     if (this.sortField !== field) return '▲▼';
     return this.sortDirection === 'asc' ? '▲' : '▼';
   }
-
 }

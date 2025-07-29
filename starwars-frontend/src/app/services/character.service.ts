@@ -33,5 +33,4 @@ export class CharacterService extends BaseApiService<ApiCharacter> {
     };
   }
 
-
 }
