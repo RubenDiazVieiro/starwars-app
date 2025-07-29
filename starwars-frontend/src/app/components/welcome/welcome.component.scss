@@ -1,11 +1,15 @@
-
-.home-container {
+.welcome-container {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
   background: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 
-
+  // === FONDO DE ESTRELLAS (copiado de home) ===
   &::before {
     content: '';
     position: absolute;
@@ -44,9 +48,7 @@
     animation-delay: -60s;
     pointer-events: none;
   }
-}
 
-.home-container {
   .stars-layer-1 {
     position: absolute;
     top: 0;
@@ -102,33 +104,64 @@
   }
 }
 
-.tabs-navigation {
+// === HEADER DE BIENVENIDA ===
+.welcome-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  z-index: 10;
+  position: relative;
+}
+
+.star-wars-title {
+  font-family: 'Star Jedi Hollow', monospace !important;
+  font-size: 4.5rem !important;
+  color: #ffe81f !important;
+  margin: 0 !important;
+  text-shadow: 0 0 20px rgba(255, 232, 31, 0.5) !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  font-weight: normal !important;
+  letter-spacing: 0.1em !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.welcome-subtitle {
+  font-size: 1.3rem;
+  color: #e2e8f0;
+  font-style: italic;
+  opacity: 0.9;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+// === NAVEGACIÓN ESTILO HOME PERO CON NUEVOS COLORES ===
+.welcome-navigation {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  padding: 2rem 1rem;
+  gap: 3rem;
   position: relative;
   z-index: 10;
 
-  .tab-btn {
+  .welcome-btn {
     position: relative;
-    padding: 1rem 2.5rem;
-    font-family: var(--font-primary);
-    font-size: 1.1rem;
+    padding: 1.5rem 3.5rem;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.3rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     border: none;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(26, 26, 46, 0.9));
-    color: var(--sw-yellow);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    color: #4A90E2;
     cursor: pointer;
     transition: all 0.4s ease;
     border-radius: 12px;
     backdrop-filter: blur(10px);
     box-shadow:
       0 4px 15px rgba(0, 0, 0, 0.3),
-      inset 0 1px 1px rgba(255, 232, 31, 0.1);
+      inset 0 1px 1px rgba(74, 144, 226, 0.1);
+    text-decoration: none;
+    display: inline-block;
 
     &::before {
       content: '';
@@ -137,7 +170,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(45deg, transparent, var(--sw-yellow), transparent);
+      background: linear-gradient(45deg, transparent, #4A90E2, transparent);
       border-radius: 12px;
       padding: 2px;
       mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -153,7 +186,7 @@
       left: 50%;
       width: 0;
       height: 0;
-      background: radial-gradient(circle, rgba(255, 232, 31, 0.3) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(74, 144, 226, 0.3) 0%, transparent 70%);
       border-radius: 50%;
       transition: all 0.4s ease;
       transform: translate(-50%, -50%);
@@ -162,137 +195,106 @@
     &:hover {
       transform: translateY(-3px) scale(1.05);
       box-shadow:
-        0 8px 25px rgba(255, 232, 31, 0.2),
-        inset 0 1px 1px rgba(255, 232, 31, 0.2);
+        0 8px 25px rgba(74, 144, 226, 0.25),
+        inset 0 1px 1px rgba(74, 144, 226, 0.2);
       color: #fff;
-      text-shadow: 0 0 10px var(--sw-yellow);
+      text-shadow: 0 0 10px #4A90E2;
 
       &::before {
         opacity: 1;
       }
 
       &::after {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
       }
     }
+  }
 
-    &.active {
-      background: linear-gradient(135deg, var(--sw-yellow), #ffd700);
-      color: var(--sw-dark);
-      text-shadow: none;
-      font-weight: 700;
-      transform: translateY(-2px);
+  // Colores específicos para cada botón
+  .characters-btn {
+    &:hover {
       box-shadow:
-        0 6px 20px rgba(255, 232, 31, 0.4),
-        inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        0 8px 25px rgba(74, 144, 226, 0.3),
+        inset 0 1px 1px rgba(74, 144, 226, 0.2);
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.15), rgba(30, 41, 59, 0.8));
+    }
+  }
 
-      &::before {
-        opacity: 0;
-      }
+  .systems-btn {
+    color: #8B5CF6;
+    box-shadow:
+      0 4px 15px rgba(0, 0, 0, 0.3),
+      inset 0 1px 1px rgba(139, 92, 246, 0.1);
 
-      &:hover {
-        transform: translateY(-4px) scale(1.02);
-        box-shadow:
-          0 10px 30px rgba(255, 232, 31, 0.5),
-          inset 0 2px 4px rgba(0, 0, 0, 0.2);
-      }
+    &::before {
+      background: linear-gradient(45deg, transparent, #8B5CF6, transparent);
+    }
+
+    &::after {
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+    }
+
+    &:hover {
+      box-shadow:
+        0 8px 25px rgba(139, 92, 246, 0.3),
+        inset 0 1px 1px rgba(139, 92, 246, 0.2);
+      text-shadow: 0 0 10px #8B5CF6;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(30, 41, 59, 0.8));
     }
   }
 }
 
-.main-content {
-  position: relative;
-  z-index: 5;
-  padding: 0 2rem;
-
-  .content-panel {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.5s ease;
-
-    &[hidden] {
-      display: block !important;
-      opacity: 0;
-      transform: translateY(20px);
-      pointer-events: none;
-      position: absolute;
-      width: calc(100% - 4rem);
-    }
-  }
-}
-
+// === ANIMACIONES DE ESTRELLAS (copiadas de home) ===
 @keyframes starsSmallContinuous1 {
-  0% {
-    transform: translateY(100vh);
-  }
-  100% {
-    transform: translateY(-100vh);
-  }
+  0% { transform: translateY(100vh); }
+  100% { transform: translateY(-100vh); }
 }
 
 @keyframes starsSmallContinuous2 {
-  0% {
-    transform: translateY(100vh);
-  }
-  100% {
-    transform: translateY(-100vh);
-  }
+  0% { transform: translateY(100vh); }
+  100% { transform: translateY(-100vh); }
 }
 
 @keyframes starsBigContinuous1 {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-100vh) rotate(180deg);
-  }
+  0% { transform: translateY(100vh) rotate(0deg); }
+  100% { transform: translateY(-100vh) rotate(180deg); }
 }
 
 @keyframes starsBigContinuous2 {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-100vh) rotate(-180deg);
-  }
+  0% { transform: translateY(100vh) rotate(0deg); }
+  100% { transform: translateY(-100vh) rotate(-180deg); }
 }
 
 @keyframes starsLargeContinuous {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-100vh) rotate(360deg);
-  }
+  0% { transform: translateY(100vh) rotate(0deg); }
+  100% { transform: translateY(-100vh) rotate(360deg); }
 }
 
+// === RESPONSIVE ===
 @media (max-width: 768px) {
-  .tabs-navigation {
+  .star-wars-title {
+    font-size: 3rem !important;
+  }
+
+  .welcome-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .welcome-navigation {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    padding: 1.5rem 1rem;
+    gap: 2rem;
 
-    .tab-btn {
+    .welcome-btn {
       width: 100%;
       max-width: 300px;
-      padding: 1rem 2rem;
-      font-size: 1rem;
+      padding: 1.2rem 2.5rem;
+      font-size: 1.1rem;
     }
   }
 
-  .main-content {
-    padding: 0 1rem;
-
-    .content-panel {
-      &[hidden] {
-        width: calc(100% - 2rem);
-      }
-    }
-  }
-
-  .home-container {
+  .welcome-container {
     .stars-layer-1,
     .stars-layer-2 {
       background-size: 400px 150px;
@@ -301,14 +303,23 @@
     .stars-layer-3 {
       background-size: 500px 200px;
     }
+
+    &::before,
+    &::after {
+      background-size: 150px 75px;
+    }
   }
 }
 
 @media (max-width: 480px) {
-  .home-container {
+  .star-wars-title {
+    font-size: 2.2rem !important;
+  }
+
+  .welcome-container {
     &::before,
     &::after {
-      background-size: 150px 75px;
+      background-size: 100px 50px;
     }
 
     .stars-layer-1,
@@ -321,23 +332,11 @@
     }
   }
 
-  .tabs-navigation {
-    padding: 1rem;
-
-    .tab-btn {
-      padding: 0.8rem 1.5rem;
-      font-size: 0.9rem;
+  .welcome-navigation {
+    .welcome-btn {
+      padding: 1rem 2rem;
+      font-size: 1rem;
       letter-spacing: 0.1em;
-    }
-  }
-
-  .main-content {
-    padding: 0 0.5rem;
-
-    .content-panel {
-      &[hidden] {
-        width: calc(100% - 1rem);
-      }
     }
   }
 }
