@@ -1,0 +1,32 @@
+<div class="home-container">
+  <header class="main-header">
+    <div class="title-wrapper">
+      <h1 class="star-wars-title">STAR WARS WEB</h1>
+    </div>
+  </header>
+
+  <nav class="tabs-navigation">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'characters'"
+      (click)="setActiveTab('characters')">
+      Characters
+    </button>
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'planets'"
+      (click)="setActiveTab('planets')">
+      Systems
+    </button>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-panel" [hidden]="activeTab !== 'characters'">
+      <app-characters></app-characters>
+    </div>
+
+    <div class="content-panel" [hidden]="activeTab !== 'planets'">
+      <app-planets></app-planets>
+    </div>
+  </main>
+</div>

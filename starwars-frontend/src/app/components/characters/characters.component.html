@@ -1,0 +1,87 @@
+<div class="character-container">
+
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (ngModelChange)="onSearchChange()"
+     placeholder="Search for heroes and villains"
+  />
+
+  @if (hasError) {
+    <div class="error">{{ errorMessage }}</div>
+  }
+
+  @if (isEmpty && !hasError) {
+    <div class="empty">No galactic beings match your search</div>
+  }
+
+  @if (!hasError && !isEmpty) {
+    <table>
+      <thead>
+      <tr>
+        <th (click)="changeSort('name')" class="sortable"
+            [attr.data-sort]="getSortDirection('name')">
+          Character <span [innerHTML]="getSortIcon('name')"></span>
+        </th>
+        <th>Species</th>
+        <th>Height (cm)</th>
+        <th>Mass (kg)</th>
+        <th>Skin</th>
+        <th>Movies</th>
+        <th (click)="changeSort('created')" class="sortable"
+            [attr.data-sort]="getSortDirection('created')">
+          First seen {{ getSortIcon('created') }}
+        </th>
+
+      </tr>
+      </thead>
+      <tbody>
+        @for (character of characters; track character) {
+          <tr>
+            <td>{{ character.name }}</td>
+            <td>{{ character.gender }}</td>
+            <td>{{ character.height }}</td>
+            <td>{{ character.mass }}</td>
+            <td>{{ character.skinColor }}</td>
+            <td class="center">{{ character.filmsCount }}</td>
+            <td>{{ character.created | date:'yyyy-MM-dd' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <div class="pagination-controls">
+        <button
+          (click)="prevPage()"
+          [disabled]="currentPage === 0"
+          class="nav-btn">
+          Prev
+        </button>
+
+        <div class="page-numbers">
+          @for (pageNum of getPageNumbers(); track pageNum) {
+            <button
+              (click)="goToPage(pageNum)"
+              [class.active]="pageNum === currentPage"
+              class="page-btn">
+              {{ pageNum + 1 }}
+            </button>
+          }
+        </div>
+
+        <button
+          (click)="nextPage()"
+          [disabled]="currentPage >= getTotalPages() - 1"
+          class="nav-btn">
+          Next
+        </button>
+      </div>
+
+      <div class="pagination-info">
+        <span>Page {{ currentPage + 1 }} of {{ getTotalPages() }} ({{ totalItems }} total)</span>
+      </div>
+    </div>
+  }
+
+</div>

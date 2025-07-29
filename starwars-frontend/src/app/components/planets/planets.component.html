@@ -1,0 +1,82 @@
+<div class="planets-container">
+
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (ngModelChange)="onSearchChange()"
+    placeholder="Explore distant worlds..."
+  />
+
+  @if (hasError) {
+    <div class="error">{{ errorMessage }}</div>
+  }
+
+  @if (isEmpty && !hasError) {
+    <div class="empty">No worlds found in this galaxy</div>
+  }
+
+  @if (!hasError && !isEmpty) {
+    <table>
+      <thead>
+      <tr>
+        <th (click)="changeSort('name')" class="sortable"
+            [attr.data-sort]="getSortDirection('name')">
+          Name {{ getSortIcon('name') }}
+        </th>
+        <th>Climate</th>
+        <th>Terrain</th>
+        <th>Population</th>
+        <th (click)="changeSort('created')" class="sortable"
+            [attr.data-sort]="getSortDirection('created')">
+          First seen {{ getSortIcon('created') }}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (planet of planets; track planet) {
+          <tr>
+            <td>{{ planet.name }}</td>
+            <td>{{ planet.climate }}</td>
+            <td>{{ planet.terrain }}</td>
+            <td>{{ planet.population }}</td>
+            <td>{{ planet.created | date:'yyyy-MM-dd' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <div class="pagination-controls">
+        <button
+          (click)="prevPage()"
+          [disabled]="currentPage === 0"
+          class="nav-btn">
+          Prev
+        </button>
+
+        <div class="page-numbers">
+          @for (pageNum of getPageNumbers(); track pageNum) {
+            <button
+              (click)="goToPage(pageNum)"
+              [class.active]="pageNum === currentPage"
+              class="page-btn">
+              {{ pageNum + 1 }}
+            </button>
+          }
+        </div>
+
+        <button
+          (click)="nextPage()"
+          [disabled]="currentPage >= getTotalPages() - 1"
+          class="nav-btn">
+          Next
+        </button>
+      </div>
+
+      <div class="pagination-info">
+        <span>Page {{ currentPage + 1 }} of {{ getTotalPages() }} ({{ totalItems }} total)</span>
+      </div>
+    </div>
+  }
+
+</div>

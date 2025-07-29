@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600&display=swap');
+
+@font-face {
+  font-family: 'Star Jedi';
+  src: url('./assets/fonts/Starjedi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Star Jedi Hollow';
+  src: url('./assets/fonts/Starjhol.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Star Jedi Outline';
+  src: url('./assets/fonts/Starjout.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Star Jedi Special Edition';
+  src: url('./assets/fonts/Stjedise.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-primary: 'Orbitron', monospace;
+  --font-secondary: 'Exo 2', sans-serif;
+  --font-star-wars: 'Star Jedi Hollow', monospace;
+
+  --sw-yellow: #FFE81F;
+  --sw-blue: #4A90E2;
+  --sw-red: #FF6B6B;
+  --sw-dark: #1A1A1A;
+  --sw-light: #F5F5F5;
+  --sw-gray: #888;
+  --sw-purple: #8B5CF6;
+  --sw-green: #10B981;
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary);
+  background: #000000;
+  color: var(--sw-light);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--sw-yellow);
+  text-shadow: 0 0 10px rgba(255, 232, 31, 0.5);
+}
+
+.star-wars-title {
+  font-family: var(--font-star-wars) !important;
+  font-size: 3.5rem;
+  color: #ffe81f;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255, 232, 31, 0.5);
+  line-height: 1;
+  white-space: nowrap;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--sw-blue);
+  text-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--sw-light);
+}
+
+a {
+  color: var(--sw-blue);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--sw-yellow);
+    text-shadow: 0 0 5px rgba(255, 232, 31, 0.7);
+  }
+}
+
+button {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 2px solid var(--sw-blue);
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--sw-blue);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  backdrop-filter: blur(5px);
+
+  &:hover:not(:disabled) {
+    background: var(--sw-blue);
+    color: var(--sw-dark);
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--sw-gray);
+    color: var(--sw-gray);
+  }
+}
+
+input, select, textarea {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--sw-gray);
+  color: var(--sw-light);
+  padding: var(--spacing-sm);
+  border-radius: 6px;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--sw-blue);
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  &::placeholder {
+    color: var(--sw-gray);
+    font-style: italic;
+  }
+}
+
+table {
+  font-family: var(--font-secondary);
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-md) 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 232, 31, 0.1);
+
+  th {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.3), rgba(255, 232, 31, 0.1));
+    color: var(--sw-yellow);
+    padding: var(--spacing-md);
+    border-bottom: 2px solid var(--sw-blue);
+    position: relative;
+
+    &.sortable {
+      cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        background: linear-gradient(135deg, rgba(74, 144, 226, 0.4), rgba(255, 232, 31, 0.2));
+        text-shadow: 0 0 8px var(--sw-yellow);
+      }
+    }
+
+    .arrow {
+      margin-left: 0.5rem;
+      font-size: 0.8em;
+      opacity: 0.7;
+    }
+  }
+
+  td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  tr:hover {
+    background: rgba(255, 232, 31, 0.08);
+    transform: scale(1.01);
+  }
+}
+
+.loading, .error, .empty {
+  font-family: var(--font-primary);
+  text-align: center;
+  padding: var(--spacing-xl);
+  margin: var(--spacing-md) 0;
+  border-radius: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.loading {
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(139, 92, 246, 0.05));
+  color: var(--sw-blue);
+  border: 1px solid var(--sw-blue);
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.error {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(239, 68, 68, 0.05));
+  color: var(--sw-red);
+  border: 1px solid var(--sw-red);
+}
+
+.empty {
+  background: linear-gradient(135deg, rgba(136, 136, 136, 0.1), rgba(107, 114, 128, 0.05));
+  color: var(--sw-gray);
+  border: 1px solid var(--sw-gray);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  font-family: var(--font-primary);
+
+  span {
+    color: var(--sw-yellow);
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(255, 232, 31, 0.3);
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+.character-container {
+  padding: var(--spacing-lg);
+
+  input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.1rem;
+  }
+}
+
+.text-primary {
+  color: var(--sw-yellow) !important;
+}
+
+.text-secondary {
+  color: var(--sw-blue) !important;
+}
+
+.font-primary {
+  font-family: var(--font-primary) !important;
+}
+
+.font-secondary {
+  font-family: var(--font-secondary) !important;
+}
+
+.font-star-wars {
+  font-family: var(--font-star-wars) !important;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 5px rgba(255, 232, 31, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(255, 232, 31, 0.8); }
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@media (max-width: 768px) {
+  h1, .star-wars-title {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+
+    th, td {
+      padding: var(--spacing-xs) var(--spacing-sm);
+    }
+  }
+
+  .character-container {
+    padding: var(--spacing-md);
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  h1, .star-wars-title {
+    font-size: 2rem;
+  }
+
+  button {
+    padding: var(--spacing-xs);
+    font-size: 0.9rem;
+  }
+
+  input, select, textarea {
+    font-size: 0.9rem;
+    padding: var(--spacing-xs);
+  }
+
+  table {
+    font-size: 0.8rem;
+
+    th, td {
+      padding: var(--spacing-xs);
+    }
+
+    .arrow {
+      display: none;
+    }
+  }
+}
